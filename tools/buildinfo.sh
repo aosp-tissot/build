@@ -19,7 +19,6 @@ echo "ro.build.date.utc=`$DATE +%s`"
 echo "ro.build.type=$TARGET_BUILD_TYPE"
 echo "ro.build.user=$USER"
 echo "ro.build.host=`hostname`"
-echo "ro.build.tags=$BUILD_VERSION_TAGS"
 echo "ro.build.flavor=$TARGET_BUILD_FLAVOR"
 if [ -n "$BOARD_BUILD_SYSTEM_ROOT_IMAGE" ] ; then
   echo "ro.build.system_root_image=$BOARD_BUILD_SYSTEM_ROOT_IMAGE"
@@ -27,10 +26,6 @@ fi
 if [ -n "$AB_OTA_UPDATER" ] ; then
   echo "ro.build.ab_update=$AB_OTA_UPDATER"
 fi
-echo "ro.product.model=$PRODUCT_MODEL"
-echo "ro.product.brand=$PRODUCT_BRAND"
-echo "ro.product.name=$PRODUCT_NAME"
-echo "ro.product.device=$TARGET_DEVICE"
 
 # These values are deprecated, use "ro.product.cpu.abilist"
 # instead (see below).
@@ -44,21 +39,11 @@ echo "ro.product.cpu.abilist=$TARGET_CPU_ABI_LIST"
 echo "ro.product.cpu.abilist32=$TARGET_CPU_ABI_LIST_32_BIT"
 echo "ro.product.cpu.abilist64=$TARGET_CPU_ABI_LIST_64_BIT"
 
-echo "ro.product.manufacturer=$PRODUCT_MANUFACTURER"
 if [ -n "$PRODUCT_DEFAULT_LOCALE" ] ; then
   echo "ro.product.locale=$PRODUCT_DEFAULT_LOCALE"
 fi
 echo "ro.wifi.channels=$PRODUCT_DEFAULT_WIFI_CHANNELS"
 
-echo "# ro.build.product is obsolete; use ro.product.device"
-echo "ro.build.product=$TARGET_DEVICE"
-
-echo "# Do not try to parse description, fingerprint, or thumbprint"
-echo "ro.build.description=$PRIVATE_BUILD_DESC"
-echo "ro.build.fingerprint=$BUILD_FINGERPRINT"
-if [ -n "$BUILD_THUMBPRINT" ] ; then
-  echo "ro.build.thumbprint=$BUILD_THUMBPRINT"
-fi
 echo "ro.build.characteristics=$TARGET_AAPT_CHARACTERISTICS"
 
 echo "# end build properties"
